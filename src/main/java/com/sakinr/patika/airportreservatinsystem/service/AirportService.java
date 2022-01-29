@@ -12,7 +12,7 @@ public interface AirportService {
 
     boolean addAirport(Airport airport);
 
-    Airport updateAirport(String name, Airport airport);
+    Airport updateAirport(Airport airport);
 
     boolean deleteAirport(Integer id);
 

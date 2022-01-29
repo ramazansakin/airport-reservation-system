@@ -1,21 +1,31 @@
 package com.sakinr.patika.airportreservatinsystem.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "airport")
 public class Airport {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotBlank
     private String name;
 
-    public Airport() {
-    }
+    @NotBlank
+    private String address;
 
-    public Airport(String name) {
-        this.name = name;
-    }
+    @Transient
+    private List<Address> addresses;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
