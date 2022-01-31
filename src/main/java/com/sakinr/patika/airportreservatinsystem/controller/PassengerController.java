@@ -43,8 +43,8 @@ public class PassengerController {
     }
 
     @PostMapping(value = "/create")
-    public void savePassenger(@Valid @RequestBody Passenger passenger) {
-        passengerService.addPassenger(passenger);
+    public void savePassenger(@Valid @RequestBody PassengerDto passenger) {
+        passengerService.addPassenger(PASSENGER_MAPPER.toEntity(passenger));
     }
 
     @PutMapping(value = "/update")
