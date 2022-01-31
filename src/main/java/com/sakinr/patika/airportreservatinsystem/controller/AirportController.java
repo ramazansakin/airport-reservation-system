@@ -1,48 +1,56 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
+
 import com.sakinr.patika.airportreservatinsystem.model.Airport;
+import com.sakinr.patika.airportreservatinsystem.model.AirportDTO;
+import com.sakinr.patika.airportreservatinsystem.model.mapper.AirportMapper;
 import com.sakinr.patika.airportreservatinsystem.service.AirportService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.List;
+import java.util.stream.Collectors;
 
+
+@Validated
 @RestController
-@RequestMapping("/airport")
+@RequiredArgsConstructor
+@RequestMapping("/api/airport")
 public class AirportController {
 
-    @Autowired
-    private AirportService airportService;
+    private final AirportService airportService;
 
-    @GetMapping(path = "/hello")
-    public String hello() {
-        return "Hello Patika - PayCore Bootcampers!";
+    @GetMapping
+    public String welcome() {
+        return "Welcome to Airport Service!";
     }
 
-    @GetMapping(path = "/all")
-    public List<Airport> getAllAirports() {
-        return airportService.getAllAirports();
+    @GetMapping(value = "/all")
+    public List<AirportDTO> getAllAirports() {
+        List<Airport> allAirports = airportService.getAllAirports();
+        return allAirports.stream().map(AirportMapper::toDto).collect(Collectors.toList());
     }
 
-    @PostMapping(path = "/get")
-    public Airport getAirport(@RequestParam Integer id) {
-        return airportService.getAirport(id);
+    @GetMapping(value = "/{id}")
+    public AirportDTO getAirport(@PathVariable @Min(1) Integer id) {
+        return AirportMapper.toDto(airportService.getAirport(id));
     }
 
-    @PostMapping(path = "/add")
-    public boolean addAirport(@RequestBody Airport airport) {
-        return airportService.addAirport(airport);
+    @PostMapping(value = "/create")
+    public void saveAirport(@Valid @RequestBody AirportDTO airport) {
+        airportService.addAirport(AirportMapper.toEntity(airport));
     }
 
-    @PutMapping(value = "/update")
-    public Airport updateAirport(@RequestBody Airport airport) {
-        return airportService.updateAirport(airport);
+    @PutMapping(value = "/update/{id}")
+    public AirportDTO updateAirport(@PathVariable @Min(1) Integer id, @Valid @RequestBody AirportDTO airport) {
+        return AirportMapper.toDto(airportService.updateAirport(id, AirportMapper.toEntity(airport)));
     }
 
-    @DeleteMapping(value = "/delete/id={id}")
-    public boolean deleteAirport(@PathVariable Integer id) {
+    @DeleteMapping(value = "/delete")
+    public boolean deleteAirport(@RequestParam @Min(1) Integer id) {
         return airportService.deleteAirport(id);
     }
 

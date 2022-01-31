@@ -12,4 +12,13 @@ public class Address {
     private String province;
     private String streetCode;
     private Integer buildingNo;
+
+    public Address(String city, String province) {
+        this.city = city;
+        this.province = province;
+    }
+
+    public String dbFormat() {
+        return city + "/" + province;
+    }
 }
