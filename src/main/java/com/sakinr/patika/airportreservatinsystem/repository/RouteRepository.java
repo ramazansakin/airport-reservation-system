@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -21,7 +22,6 @@ public interface RouteRepository extends JpaRepository<Route, Integer> {
                     " AND " +
                     " (:arrival_airport is NULL or r.arrivalAirport = :arrival_airport) "
     )
-
     Page<Route> findByDeparture_airportAndArrival_airport(
             Pageable pageable,
             @Param("departure_airport") Airport departure_airport,
@@ -30,7 +30,7 @@ public interface RouteRepository extends JpaRepository<Route, Integer> {
 
     default List<Route> findByDeparture_airportIs(Airport departure_airport) {
         // we can add default behaviour here if there is problem with this function
-        return null;
+        return new ArrayList<>();
     }
 
     Route getFirstById(Integer id);

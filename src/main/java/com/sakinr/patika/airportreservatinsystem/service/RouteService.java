@@ -17,6 +17,6 @@ public interface RouteService {
 
     boolean deleteRoute(Integer id);
 
-    Route getFirstRouteByDepartureAirportByDefault(Integer departure_airport_id);
+    Route getFirstRouteByDepartureAirportByDefault(Integer departureAirportId);
 
 }

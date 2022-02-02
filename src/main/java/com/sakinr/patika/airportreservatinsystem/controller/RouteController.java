@@ -47,11 +47,11 @@ public class RouteController {
         return routeService.deleteRoute(id);
     }
 
-    @GetMapping(value = "/v2/departure-airport/{dep_id}")
+    @GetMapping(value = "/v2/departure-airport/{depId}")
     public ResponseEntity<Route> getOneByDepartureIdV2(
-            @PathVariable @Min(1) Integer dep_id
+            @PathVariable @Min(1) Integer depId
     ) {
-        Route route = routeService.getFirstRouteByDepartureAirportByDefault(dep_id);
+        Route route = routeService.getFirstRouteByDepartureAirportByDefault(depId);
         return new ResponseEntity<>(route, HttpStatus.OK);
     }
 

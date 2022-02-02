@@ -49,9 +49,9 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Route getFirstRouteByDepartureAirportByDefault(Integer departure_airport_id) {
-        Airport dep_airport = airportService.getAirport(departure_airport_id);
-        Optional<Route> byDepartureAirport = Optional.ofNullable(routeRepository.findByDepartureAirport(dep_airport));
+    public Route getFirstRouteByDepartureAirportByDefault(Integer departureAirportId) {
+        Airport depAirport = airportService.getAirport(departureAirportId);
+        Optional<Route> byDepartureAirport = Optional.ofNullable(routeRepository.findByDepartureAirport(depAirport));
         return byDepartureAirport.orElseThrow(() -> new NotFoundException("FirstRouteByDepartureAirport"));
     }
 
