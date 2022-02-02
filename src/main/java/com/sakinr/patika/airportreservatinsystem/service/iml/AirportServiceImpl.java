@@ -95,8 +95,8 @@ public class AirportServiceImpl implements AirportService {
         return function.apply(airport1, airport2);
     }
 
-    private void consumeAirportAddresses(Integer airport_id) {
-        Airport airport = airportRepository.getOne(airport_id);
+    private void consumeAirportAddresses(Integer airportId) {
+        Airport airport = airportRepository.getById(airportId);
 
         // Defining a consumer for airport address list
         Consumer<Airport> airportConsumer = air -> air.getAddresses().forEach(System.out::println);
