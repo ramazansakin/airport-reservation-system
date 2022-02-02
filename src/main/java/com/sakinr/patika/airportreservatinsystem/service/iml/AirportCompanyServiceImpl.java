@@ -7,7 +7,10 @@ import com.sakinr.patika.airportreservatinsystem.model.Flight;
 import com.sakinr.patika.airportreservatinsystem.model.Passenger;
 import com.sakinr.patika.airportreservatinsystem.model.Ticket;
 import com.sakinr.patika.airportreservatinsystem.repository.AirportCompanyRepository;
-import com.sakinr.patika.airportreservatinsystem.service.*;
+import com.sakinr.patika.airportreservatinsystem.service.AirportCompanyService;
+import com.sakinr.patika.airportreservatinsystem.service.FlightService;
+import com.sakinr.patika.airportreservatinsystem.service.PassengerService;
+import com.sakinr.patika.airportreservatinsystem.service.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +25,6 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     private final AirportCompanyRepository airportCompanyRepository;
 
     private final FlightService flightService;
-
-    private final RouteService routeService;
-
-    private final AirportService airportService;
 
     private final TicketService ticketService;
 
@@ -53,9 +52,9 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public boolean addNewFlight(Integer airport_company_id, Integer flight_id) {
-        AirportCompany one = airportCompanyRepository.getOne(airport_company_id);
-        Flight flight = flightService.getFlight(flight_id);
+    public boolean addNewFlight(Integer airportCompanyId, Integer flightId) {
+        AirportCompany one = airportCompanyRepository.getById(airportCompanyId);
+        Flight flight = flightService.getFlight(flightId);
         List<Flight> flights = one.getFlights();
         flights.add(flight);
         airportCompanyRepository.save(one);
@@ -70,8 +69,8 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public boolean cancelTicket(Integer ticket_id) {
-        Ticket ticket = ticketService.getTicket(ticket_id);
+    public boolean cancelTicket(Integer ticketId) {
+        Ticket ticket = ticketService.getTicket(ticketId);
         Flight flight = flightService.getFlight(ticket.getFlight().getId());
         Ticket ticket1 = flight.getTickets().stream()
                 .filter(t -> t.getId().equals(ticket.getId()))
@@ -83,14 +82,14 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public Ticket searchTicket(Integer ticket_id) {
-        return ticketService.getTicket(ticket_id);
+    public Ticket searchTicket(Integer ticketId) {
+        return ticketService.getTicket(ticketId);
     }
 
     @Override
-    public Ticket buyTicketForFlight(Integer flight_id, Integer passenger_id) {
-        Passenger passenger = passengerService.getPassenger(passenger_id);
-        Flight flight = flightService.getFlight(flight_id);
+    public Ticket buyTicketForFlight(Integer flightId, Integer passengerId) {
+        Passenger passenger = passengerService.getPassenger(passengerId);
+        Flight flight = flightService.getFlight(flightId);
 
         if (flight.getTickets().size() < flight.getQuota()) {
             Ticket newTicket = new Ticket();
@@ -111,8 +110,8 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public List<Flight> getAllFlightByAirportCompany(Integer airport_company_id) {
-        AirportCompany airportCompany = getAirportCompany(airport_company_id);
+    public List<Flight> getAllFlightByAirportCompany(Integer airportCompanyId) {
+        AirportCompany airportCompany = getAirportCompany(airportCompanyId);
         return airportCompany.getFlights();
     }
 

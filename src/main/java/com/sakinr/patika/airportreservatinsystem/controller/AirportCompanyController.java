@@ -53,29 +53,29 @@ public class AirportCompanyController {
     }
 
     @PostMapping(value = "/add-flight")
-    public boolean addNewFlight(@RequestParam @Min(1) Integer organization_id,
-                                @RequestParam @Min(1) Integer flight_id) {
-        return airportCompanyService.addNewFlight(organization_id, flight_id);
+    public boolean addNewFlight(@RequestParam @Min(1) Integer organizationId,
+                                @RequestParam @Min(1) Integer flightId) {
+        return airportCompanyService.addNewFlight(organizationId, flightId);
     }
 
     @PostMapping(value = "/buy-ticket")
-    public Ticket buyTicket(@RequestParam @Min(1) Integer flight_id, @RequestParam @Min(1) Integer passenger_id) {
-        return airportCompanyService.buyTicketForFlight(flight_id, passenger_id);
+    public Ticket buyTicket(@RequestParam @Min(1) Integer flightId, @RequestParam @Min(1) Integer passengerId) {
+        return airportCompanyService.buyTicketForFlight(flightId, passengerId);
     }
 
     @PostMapping(value = "/cancel-ticket")
-    public boolean cancelTicket(@RequestParam @Min(1) Integer ticket_id) {
-        return airportCompanyService.cancelTicket(ticket_id);
+    public boolean cancelTicket(@RequestParam @Min(1) Integer ticketId) {
+        return airportCompanyService.cancelTicket(ticketId);
     }
 
     @PostMapping(value = "/search-ticket")
-    public Ticket searchTicket(@RequestParam @Min(1) Integer ticket_id) {
-        return airportCompanyService.searchTicket(ticket_id);
+    public Ticket searchTicket(@RequestParam @Min(1) Integer ticketId) {
+        return airportCompanyService.searchTicket(ticketId);
     }
 
-    @GetMapping("/by-airport-company/{airport_company_id}")
-    public List<Flight> getAllFlightByAirportCompany(@PathVariable Integer airport_company_id) {
-        return airportCompanyService.getAllFlightByAirportCompany(airport_company_id);
+    @GetMapping("/by-airport-company/{airportCompanyId}")
+    public List<Flight> getAllFlightByAirportCompany(@PathVariable Integer airportCompanyId) {
+        return airportCompanyService.getAllFlightByAirportCompany(airportCompanyId);
     }
 
 }

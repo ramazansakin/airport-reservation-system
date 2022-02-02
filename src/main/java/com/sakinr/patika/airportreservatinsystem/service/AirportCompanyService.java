@@ -18,13 +18,13 @@ public interface AirportCompanyService {
 
     boolean deleteAirportCompany(Integer id);
 
-    boolean addNewFlight(Integer airport_company_id, Integer flight_id);
+    boolean addNewFlight(Integer airportCompanyId, Integer flightId);
 
-    Ticket buyTicketForFlight(Integer flight_id, Integer passenger_id);
+    Ticket buyTicketForFlight(Integer flightId, Integer passengerId);
 
-    boolean cancelTicket(Integer ticket_id);
+    boolean cancelTicket(Integer ticketId);
 
-    Ticket searchTicket(Integer ticket_id);
+    Ticket searchTicket(Integer ticketId);
 
-    List<Flight> getAllFlightByAirportCompany(Integer airport_company_id);
+    List<Flight> getAllFlightByAirportCompany(Integer airportCompanyId);
 }
