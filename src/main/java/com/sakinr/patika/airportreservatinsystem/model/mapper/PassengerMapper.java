@@ -4,6 +4,7 @@ import com.sakinr.patika.airportreservatinsystem.model.Passenger;
 import com.sakinr.patika.airportreservatinsystem.model.PassengerDto;
 import org.mapstruct.Mapper;
 
+// Sample mapstruct defined mapper
 @Mapper
 public interface PassengerMapper {
     PassengerDto toDto(Passenger entity);
