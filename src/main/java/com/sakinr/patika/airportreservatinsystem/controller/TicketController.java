@@ -2,7 +2,6 @@ package com.sakinr.patika.airportreservatinsystem.controller;
 
 
 import com.sakinr.patika.airportreservatinsystem.model.Ticket;
-import com.sakinr.patika.airportreservatinsystem.service.FlightService;
 import com.sakinr.patika.airportreservatinsystem.service.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -20,8 +19,6 @@ import java.util.List;
 public class TicketController {
 
     private final TicketService ticketService;
-
-    private final FlightService flightService;
 
     @GetMapping
     public String welcome() {
