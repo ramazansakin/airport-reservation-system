@@ -26,6 +26,7 @@ public class AirportCompany implements Serializable {
     @NotNull(message = "name can not be null")
     private String name;
 
+    // Cascade Type sample usage as CascadeType.REMOVE
     @JsonBackReference
     @OneToMany(mappedBy = "airportCompany", cascade = CascadeType.MERGE)
     private List<Flight> flights;
