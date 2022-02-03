@@ -13,10 +13,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
+// JPA -Hibernate self-created query apis
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Integer> {
 
-    // JPA -Hibernate self-created query apis
     List<Ticket> getByPassenger(Passenger passenger);
 
     List<Ticket> getByFlight(Flight flight);

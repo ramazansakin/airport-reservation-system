@@ -1,6 +1,9 @@
 package com.sakinr.patika.airportreservatinsystem.service;
 
+import com.sakinr.patika.airportreservatinsystem.model.Flight;
 import com.sakinr.patika.airportreservatinsystem.model.Ticket;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,5 +19,7 @@ public interface TicketService {
     Ticket updateTicket(Ticket ticket);
 
     boolean deleteTicket(Integer id);
+
+    Page<Ticket> getRelatedFlightTickets(Pageable pageable, Flight flight);
 
 }

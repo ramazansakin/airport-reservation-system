@@ -1,10 +1,13 @@
 package com.sakinr.patika.airportreservatinsystem.service.iml;
 
 import com.sakinr.patika.airportreservatinsystem.exception.NotFoundException;
+import com.sakinr.patika.airportreservatinsystem.model.Flight;
 import com.sakinr.patika.airportreservatinsystem.model.Ticket;
 import com.sakinr.patika.airportreservatinsystem.repository.TicketRepository;
 import com.sakinr.patika.airportreservatinsystem.service.TicketService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,6 +45,11 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = getTicket(id);
         ticketRepository.delete(ticket);
         return true;
+    }
+
+    @Override
+    public Page<Ticket> getRelatedFlightTickets(Pageable pageable, Flight flight) {
+        return ticketRepository.getAllByFlightPagination(pageable, flight);
     }
 
 }
