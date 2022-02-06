@@ -1,5 +1,6 @@
-package com.sakinr.patika.airportreservatinsystem.model;
+package com.sakinr.patika.airportreservatinsystem.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,8 +51,8 @@ public class Flight implements Serializable {
     @JoinColumn(name = "route_id", referencedColumnName = "id")
     private Route route;
 
+    @JsonBackReference
     @NotNull(message = "airport can not be null")
-    @JsonManagedReference
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "airport_company_id", referencedColumnName = "id")
     private AirportCompany airportCompany;

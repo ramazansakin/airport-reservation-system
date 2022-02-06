@@ -1,5 +1,6 @@
-package com.sakinr.patika.airportreservatinsystem.model;
+package com.sakinr.patika.airportreservatinsystem.model.entity;
 
+import com.sakinr.patika.airportreservatinsystem.model.Address;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package com.sakinr.patika.airportreservatinsystem.model;
+package com.sakinr.patika.airportreservatinsystem.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,7 +27,7 @@ public class AirportCompany implements Serializable {
     private String name;
 
     // Cascade Type sample usage as CascadeType.REMOVE
-    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "airportCompany", cascade = CascadeType.MERGE)
     private List<Flight> flights;
 
