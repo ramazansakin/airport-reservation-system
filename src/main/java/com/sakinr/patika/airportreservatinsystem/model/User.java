@@ -21,7 +21,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Size(min = 5, message = "Minimum password length: 8 characters")
+    @Size(min = 5, message = "Minimum password length: 5 characters")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
