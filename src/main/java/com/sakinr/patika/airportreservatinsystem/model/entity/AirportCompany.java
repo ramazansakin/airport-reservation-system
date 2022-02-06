@@ -1,23 +1,20 @@
 package com.sakinr.patika.airportreservatinsystem.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "airport_company")
-public class AirportCompany implements Serializable {
+public class AirportCompany {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +24,7 @@ public class AirportCompany implements Serializable {
     private String name;
 
     // Cascade Type sample usage as CascadeType.REMOVE
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "airportCompany", cascade = CascadeType.MERGE)
     private List<Flight> flights;
 

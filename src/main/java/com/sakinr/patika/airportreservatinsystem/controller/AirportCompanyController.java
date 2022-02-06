@@ -6,6 +6,7 @@ import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import com.sakinr.patika.airportreservatinsystem.service.AirportCompanyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,8 +38,7 @@ public class AirportCompanyController {
         return airportCompanyService.getAirportCompany(id);
     }
 
-    // TODO - need to test
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void saveAirportCompany(@Valid @RequestBody AirportCompany airportCompany) {
         airportCompanyService.addAirportCompany(airportCompany);
     }
@@ -54,9 +54,9 @@ public class AirportCompanyController {
     }
 
     @PostMapping(value = "/add-flight")
-    public boolean addNewFlight(@RequestParam @Min(1) Integer organizationId,
+    public boolean addNewFlight(@RequestParam @Min(1) Integer airportCompanyId,
                                 @RequestParam @Min(1) Integer flightId) {
-        return airportCompanyService.addNewFlight(organizationId, flightId);
+        return airportCompanyService.addNewFlight(airportCompanyId, flightId);
     }
 
     @PostMapping(value = "/buy-ticket")
