@@ -1,6 +1,6 @@
 package com.sakinr.patika.airportreservatinsystem.model.mapper;
 
-import com.sakinr.patika.airportreservatinsystem.model.Airport;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Airport;
 import com.sakinr.patika.airportreservatinsystem.model.AirportDTO;
 
 // Sample user defined Mapper

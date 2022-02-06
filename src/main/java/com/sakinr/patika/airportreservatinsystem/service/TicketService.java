@@ -1,7 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.service;
 
-import com.sakinr.patika.airportreservatinsystem.model.Flight;
-import com.sakinr.patika.airportreservatinsystem.model.Ticket;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

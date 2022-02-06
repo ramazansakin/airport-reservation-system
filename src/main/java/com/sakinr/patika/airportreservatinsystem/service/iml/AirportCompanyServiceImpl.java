@@ -2,10 +2,10 @@ package com.sakinr.patika.airportreservatinsystem.service.iml;
 
 import com.sakinr.patika.airportreservatinsystem.exception.NotFoundException;
 import com.sakinr.patika.airportreservatinsystem.exception.QuotaIsFullException;
-import com.sakinr.patika.airportreservatinsystem.model.AirportCompany;
-import com.sakinr.patika.airportreservatinsystem.model.Flight;
-import com.sakinr.patika.airportreservatinsystem.model.Passenger;
-import com.sakinr.patika.airportreservatinsystem.model.Ticket;
+import com.sakinr.patika.airportreservatinsystem.model.entity.AirportCompany;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Passenger;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import com.sakinr.patika.airportreservatinsystem.repository.AirportCompanyRepository;
 import com.sakinr.patika.airportreservatinsystem.service.AirportCompanyService;
 import com.sakinr.patika.airportreservatinsystem.service.FlightService;
@@ -53,11 +53,11 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
 
     @Override
     public boolean addNewFlight(Integer airportCompanyId, Integer flightId) {
-        AirportCompany one = airportCompanyRepository.getById(airportCompanyId);
+        AirportCompany airportCompany = getAirportCompany(airportCompanyId);
         Flight flight = flightService.getFlight(flightId);
-        List<Flight> flights = one.getFlights();
+        List<Flight> flights = airportCompany.getFlights();
         flights.add(flight);
-        airportCompanyRepository.save(one);
+        airportCompanyRepository.save(airportCompany);
         return true;
     }
 

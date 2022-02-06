@@ -1,6 +1,6 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
-import com.sakinr.patika.airportreservatinsystem.model.Flight;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservatinsystem.service.FlightService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

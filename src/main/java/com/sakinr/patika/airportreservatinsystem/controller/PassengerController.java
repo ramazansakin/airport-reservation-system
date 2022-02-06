@@ -2,7 +2,7 @@ package com.sakinr.patika.airportreservatinsystem.controller;
 
 
 import com.sakinr.patika.airportreservatinsystem.exception.InvalidRequestException;
-import com.sakinr.patika.airportreservatinsystem.model.Passenger;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Passenger;
 import com.sakinr.patika.airportreservatinsystem.model.PassengerDto;
 import com.sakinr.patika.airportreservatinsystem.model.mapper.PassengerMapper;
 import com.sakinr.patika.airportreservatinsystem.service.PassengerService;

@@ -1,8 +1,8 @@
 package com.sakinr.patika.airportreservatinsystem.repository;
 
-import com.sakinr.patika.airportreservatinsystem.model.Flight;
-import com.sakinr.patika.airportreservatinsystem.model.Passenger;
-import com.sakinr.patika.airportreservatinsystem.model.Ticket;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Passenger;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,5 +32,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Integer> {
             Pageable pageable,
             @Param("flight") Flight flight
     );
+
+    Page<Ticket> getAllByFlightOrderById(Pageable pageable, Flight flight);
 
 }

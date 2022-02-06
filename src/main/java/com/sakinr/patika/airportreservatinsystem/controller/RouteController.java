@@ -1,7 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
 
-import com.sakinr.patika.airportreservatinsystem.model.Route;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Route;
 import com.sakinr.patika.airportreservatinsystem.service.RouteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

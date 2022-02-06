@@ -1,7 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.service;
 
 
-import com.sakinr.patika.airportreservatinsystem.model.Route;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Route;
 
 import java.util.List;
 

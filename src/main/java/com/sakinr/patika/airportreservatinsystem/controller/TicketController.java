@@ -1,8 +1,8 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
 
-import com.sakinr.patika.airportreservatinsystem.model.Flight;
-import com.sakinr.patika.airportreservatinsystem.model.Ticket;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import com.sakinr.patika.airportreservatinsystem.service.FlightService;
 import com.sakinr.patika.airportreservatinsystem.service.TicketService;
 import lombok.RequiredArgsConstructor;

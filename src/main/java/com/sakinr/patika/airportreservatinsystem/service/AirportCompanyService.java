@@ -1,9 +1,9 @@
 package com.sakinr.patika.airportreservatinsystem.service;
 
 
-import com.sakinr.patika.airportreservatinsystem.model.AirportCompany;
-import com.sakinr.patika.airportreservatinsystem.model.Flight;
-import com.sakinr.patika.airportreservatinsystem.model.Ticket;
+import com.sakinr.patika.airportreservatinsystem.model.entity.AirportCompany;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 
 import java.util.List;
 

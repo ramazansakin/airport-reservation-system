@@ -1,6 +1,6 @@
 package com.sakinr.patika.airportreservatinsystem.service;
 
-import com.sakinr.patika.airportreservatinsystem.model.Passenger;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Passenger;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;

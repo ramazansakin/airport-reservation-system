@@ -1,8 +1,8 @@
 package com.sakinr.patika.airportreservatinsystem.service.iml;
 
 import com.sakinr.patika.airportreservatinsystem.exception.NotFoundException;
-import com.sakinr.patika.airportreservatinsystem.model.Flight;
-import com.sakinr.patika.airportreservatinsystem.model.Ticket;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import com.sakinr.patika.airportreservatinsystem.repository.TicketRepository;
 import com.sakinr.patika.airportreservatinsystem.service.TicketService;
 import lombok.RequiredArgsConstructor;

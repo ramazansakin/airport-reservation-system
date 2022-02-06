@@ -2,8 +2,8 @@ package com.sakinr.patika.airportreservatinsystem.service.iml;
 
 
 import com.sakinr.patika.airportreservatinsystem.exception.NotFoundException;
-import com.sakinr.patika.airportreservatinsystem.model.Airport;
-import com.sakinr.patika.airportreservatinsystem.model.Route;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Airport;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Route;
 import com.sakinr.patika.airportreservatinsystem.repository.RouteRepository;
 import com.sakinr.patika.airportreservatinsystem.service.AirportService;
 import com.sakinr.patika.airportreservatinsystem.service.RouteService;

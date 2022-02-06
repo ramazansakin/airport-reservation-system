@@ -1,7 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
 
-import com.sakinr.patika.airportreservatinsystem.model.Airport;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Airport;
 import com.sakinr.patika.airportreservatinsystem.model.AirportDTO;
 import com.sakinr.patika.airportreservatinsystem.model.mapper.AirportMapper;
 import com.sakinr.patika.airportreservatinsystem.service.AirportService;

@@ -1,7 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.repository;
 
-import com.sakinr.patika.airportreservatinsystem.model.Airport;
-import com.sakinr.patika.airportreservatinsystem.model.Route;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Airport;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Route;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

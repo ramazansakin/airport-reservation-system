@@ -1,7 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.messaging.producer;
 
 import com.sakinr.patika.airportreservatinsystem.config.RabbitMQConfig;
-import com.sakinr.patika.airportreservatinsystem.model.Passenger;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Passenger;
 import com.sakinr.patika.airportreservatinsystem.service.PassengerService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
 
-import com.sakinr.patika.airportreservatinsystem.model.AirportCompany;
-import com.sakinr.patika.airportreservatinsystem.model.Flight;
-import com.sakinr.patika.airportreservatinsystem.model.Ticket;
+import com.sakinr.patika.airportreservatinsystem.model.entity.AirportCompany;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import com.sakinr.patika.airportreservatinsystem.service.AirportCompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -37,6 +37,7 @@ public class AirportCompanyController {
         return airportCompanyService.getAirportCompany(id);
     }
 
+    // TODO - need to test
     @PostMapping(value = "/create")
     public void saveAirportCompany(@Valid @RequestBody AirportCompany airportCompany) {
         airportCompanyService.addAirportCompany(airportCompany);
