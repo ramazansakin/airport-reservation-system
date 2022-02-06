@@ -1,6 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,10 +17,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "flight")
-public class Flight implements Serializable {
+public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +42,6 @@ public class Flight implements Serializable {
     @Column(name = "estimated_arrival_date")
     private Date estimatedArrivalDate;
 
-    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "flight", cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 
@@ -51,12 +50,10 @@ public class Flight implements Serializable {
     @JoinColumn(name = "route_id", referencedColumnName = "id")
     private Route route;
 
-    @JsonBackReference
     @NotNull(message = "airport can not be null")
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "airport_company_id", referencedColumnName = "id")
     private AirportCompany airportCompany;
-
 
 //    Sample Reference management - Avoid infinite loop
 //    public class User {

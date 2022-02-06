@@ -6,6 +6,7 @@ import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservatinsystem.repository.FlightRepository;
 import com.sakinr.patika.airportreservatinsystem.service.FlightService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -19,6 +20,7 @@ public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public List<Flight> getAllFlights() {
         return flightRepository.findAll();
     }
