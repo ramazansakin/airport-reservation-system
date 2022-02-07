@@ -1,7 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.service.iml;
 
 import com.sakinr.patika.airportreservatinsystem.exception.CustomJwtException;
-import com.sakinr.patika.airportreservatinsystem.model.User;
+import com.sakinr.patika.airportreservatinsystem.model.entity.User;
 import com.sakinr.patika.airportreservatinsystem.repository.RoleRepository;
 import com.sakinr.patika.airportreservatinsystem.security.JwtTokenProvider;
 import com.sakinr.patika.airportreservatinsystem.security.UserRepository;

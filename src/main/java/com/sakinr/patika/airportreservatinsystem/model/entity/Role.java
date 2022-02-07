@@ -1,4 +1,4 @@
-package com.sakinr.patika.airportreservatinsystem.model;
+package com.sakinr.patika.airportreservatinsystem.model.entity;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

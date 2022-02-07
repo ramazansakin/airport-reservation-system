@@ -1,6 +1,6 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
-import com.sakinr.patika.airportreservatinsystem.model.User;
+import com.sakinr.patika.airportreservatinsystem.model.entity.User;
 import com.sakinr.patika.airportreservatinsystem.model.UserDataDTO;
 import com.sakinr.patika.airportreservatinsystem.model.UserLoginDTO;
 import com.sakinr.patika.airportreservatinsystem.model.UserResponseDTO;

@@ -1,6 +1,6 @@
 package com.sakinr.patika.airportreservatinsystem.security;
 
-import com.sakinr.patika.airportreservatinsystem.model.User;
+import com.sakinr.patika.airportreservatinsystem.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

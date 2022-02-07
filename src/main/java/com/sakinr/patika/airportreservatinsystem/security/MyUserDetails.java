@@ -1,6 +1,6 @@
 package com.sakinr.patika.airportreservatinsystem.security;
 
-import com.sakinr.patika.airportreservatinsystem.model.User;
+import com.sakinr.patika.airportreservatinsystem.model.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

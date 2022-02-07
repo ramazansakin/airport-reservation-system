@@ -2,7 +2,7 @@ package com.sakinr.patika.airportreservatinsystem.security;
 
 
 import com.sakinr.patika.airportreservatinsystem.exception.CustomJwtException;
-import com.sakinr.patika.airportreservatinsystem.model.Role;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
