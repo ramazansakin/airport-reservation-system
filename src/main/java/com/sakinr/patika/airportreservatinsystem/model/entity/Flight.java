@@ -1,16 +1,12 @@
 package com.sakinr.patika.airportreservatinsystem.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +46,7 @@ public class Flight {
     @JoinColumn(name = "route_id", referencedColumnName = "id")
     private Route route;
 
+    @JsonIgnore
     @NotNull(message = "airport can not be null")
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "airport_company_id", referencedColumnName = "id")

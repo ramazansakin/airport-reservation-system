@@ -1,6 +1,5 @@
 package com.sakinr.patika.airportreservatinsystem.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +23,6 @@ public class AirportCompany {
     private String name;
 
     // Cascade Type sample usage as CascadeType.REMOVE
-    @JsonIgnore
     @OneToMany(mappedBy = "airportCompany", cascade = CascadeType.MERGE)
     private List<Flight> flights;
 

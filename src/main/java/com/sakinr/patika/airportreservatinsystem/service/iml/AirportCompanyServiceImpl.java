@@ -51,14 +51,11 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
         return airportCompanyRepository.save(airportCompany);
     }
 
-    // TODO
     @Override
     public boolean addNewFlight(Integer airportCompanyId, Integer flightId) {
         AirportCompany airportCompany = getAirportCompany(airportCompanyId);
         Flight flight = flightService.getFlight(flightId);
-        List<Flight> flights = airportCompany.getFlights();
-        flights.add(flight);
-        airportCompany.setFlights(flights);
+        flight.setAirportCompany(airportCompany);
         airportCompanyRepository.save(airportCompany);
         return true;
     }
