@@ -1,6 +1,5 @@
 package com.sakinr.patika.airportreservatinsystem.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,7 +45,7 @@ public class Flight {
     @JoinColumn(name = "route_id", referencedColumnName = "id")
     private Route route;
 
-    @JsonIgnore
+
     @NotNull(message = "airport can not be null")
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "airport_company_id", referencedColumnName = "id")
