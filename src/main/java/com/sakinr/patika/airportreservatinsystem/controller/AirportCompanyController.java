@@ -6,7 +6,10 @@ import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import com.sakinr.patika.airportreservatinsystem.service.AirportCompanyService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +17,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.List;
 
-
+@Slf4j
 @Validated
 @RestController
 @RequiredArgsConstructor
@@ -34,8 +37,11 @@ public class AirportCompanyController {
     }
 
     @GetMapping(value = "/{id}")
-    public AirportCompany getAirportCompany(@PathVariable @Min(1) Integer id) {
-        return airportCompanyService.getAirportCompany(id);
+    public ResponseEntity<?> getAirportCompany(@PathVariable @Min(1) Integer id) {
+        AirportCompany airportCompany = airportCompanyService.getAirportCompany(id);
+        ResponseEntity<?> response = new ResponseEntity<>(airportCompany, HttpStatus.OK);
+        log.info("Response : " + response);
+        return response;
     }
 
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -1,11 +1,13 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
 
-import com.sakinr.patika.airportreservatinsystem.model.entity.Airport;
 import com.sakinr.patika.airportreservatinsystem.model.AirportDTO;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Airport;
 import com.sakinr.patika.airportreservatinsystem.model.mapper.AirportMapper;
 import com.sakinr.patika.airportreservatinsystem.service.AirportService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,8 +37,12 @@ public class AirportController {
     }
 
     @GetMapping(value = "/{id}")
-    public AirportDTO getAirport(@PathVariable @Min(1) Integer id) {
-        return AirportMapper.toDto(airportService.getAirport(id));
+    public ResponseEntity<?> getAirport(@PathVariable @Min(1) Integer id) {
+        ResponseEntity<?> response = null;
+        Airport airport = airportService.getAirport(id);
+        AirportDTO airportDTO = AirportMapper.toDto(airport);
+        response = new ResponseEntity<>(airportDTO, HttpStatus.OK);
+        return response;
     }
 
     @PostMapping(value = "/create")

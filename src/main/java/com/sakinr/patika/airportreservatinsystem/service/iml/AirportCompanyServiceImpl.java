@@ -38,7 +38,7 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     @Override
     public AirportCompany getAirportCompany(Integer id) {
         Optional<AirportCompany> byId = airportCompanyRepository.findById(id);
-        return byId.orElseThrow(() -> new NotFoundException("Airport"));
+        return byId.orElseThrow(() -> new NotFoundException("AirportCompany"));
     }
 
     @Override
