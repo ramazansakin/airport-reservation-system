@@ -6,7 +6,6 @@ import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservatinsystem.repository.FlightRepository;
 import com.sakinr.patika.airportreservatinsystem.service.FlightService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
