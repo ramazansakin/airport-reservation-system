@@ -1,6 +1,7 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
 
+import com.sakinr.patika.airportreservatinsystem.exception.QuotaIsFullException;
 import com.sakinr.patika.airportreservatinsystem.model.entity.AirportCompany;
 import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
@@ -8,7 +9,6 @@ import com.sakinr.patika.airportreservatinsystem.service.AirportCompanyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +28,7 @@ public class AirportCompanyController {
 
     @GetMapping
     public String welcome() {
-        return "Welcome to Airport Service!";
+        return "Welcome to Airportcompany Service!";
     }
 
     @GetMapping(value = "/all")
@@ -44,7 +44,7 @@ public class AirportCompanyController {
         return response;
     }
 
-    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/create")
     public void saveAirportCompany(@Valid @RequestBody AirportCompany airportCompany) {
         airportCompanyService.addAirportCompany(airportCompany);
     }
@@ -66,8 +66,15 @@ public class AirportCompanyController {
     }
 
     @PostMapping(value = "/buy-ticket")
-    public Ticket buyTicket(@RequestParam @Min(1) Integer flightId, @RequestParam @Min(1) Integer passengerId) {
-        return airportCompanyService.buyTicketForFlight(flightId, passengerId);
+    public ResponseEntity<?> buyTicket(@RequestParam @Min(1) Integer flightId, @RequestParam @Min(1) Integer passengerId) {
+        ResponseEntity<?> response;
+        try {
+            Ticket ticket = airportCompanyService.buyTicketForFlight(flightId, passengerId);
+            response = new ResponseEntity<>(ticket, HttpStatus.OK);
+        } catch (QuotaIsFullException exception) {
+            response = new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return response;
     }
 
     @PostMapping(value = "/cancel-ticket")
