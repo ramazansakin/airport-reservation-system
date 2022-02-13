@@ -20,7 +20,6 @@ public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
 
     @Override
-    @PreAuthorize("hasRole('USER')")
     public List<Flight> getAllFlights() {
         return flightRepository.findAll();
     }

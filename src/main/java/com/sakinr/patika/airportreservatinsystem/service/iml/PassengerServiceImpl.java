@@ -20,6 +20,7 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     public List<Passenger> getAllPassengers() {
+        // business logic
         return passengerRepository.findAll();
     }
 
