@@ -30,20 +30,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>3.18.3</version>
-        </dependency>
+
 
         <!-- Junit lib -->
         <dependency>
@@ -58,10 +50,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--        		<dependency>-->
-        <!--        			<groupId>org.thymeleaf.extras</groupId>-->
-        <!--        			<artifactId>thymeleaf-extras-springsecurity5</artifactId>-->
-        <!--        		</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -111,21 +99,7 @@
             <artifactId>modelmapper</artifactId>
             <version>2.4.5</version>
         </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.4</version>
-        </dependency>
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.amqp</groupId>-->
-        <!--			<artifactId>spring-rabbit-test</artifactId>-->
-        <!--			<scope>test</scope>-->
-        <!--		</dependency>-->
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.security</groupId>-->
-        <!--			<artifactId>spring-security-test</artifactId>-->
-        <!--			<scope>test</scope>-->
-        <!--		</dependency>-->
+
     </dependencies>
 
     <build>

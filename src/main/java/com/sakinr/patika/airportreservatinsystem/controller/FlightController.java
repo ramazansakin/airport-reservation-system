@@ -4,7 +4,6 @@ import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservatinsystem.service.FlightService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +13,6 @@ import java.util.Date;
 import java.util.List;
 
 
-//@PreAuthorize("isAuthenticated()")
 @Validated
 @RestController
 @RequiredArgsConstructor
