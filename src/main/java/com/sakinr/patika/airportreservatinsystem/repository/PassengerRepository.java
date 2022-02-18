@@ -1,9 +1,9 @@
 package com.sakinr.patika.airportreservatinsystem.repository;
 
 import com.sakinr.patika.airportreservatinsystem.model.entity.Passenger;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PassengerRepository extends JpaRepository<Passenger, Integer> {
+public interface PassengerRepository extends MongoRepository<Passenger, String> {
 }
