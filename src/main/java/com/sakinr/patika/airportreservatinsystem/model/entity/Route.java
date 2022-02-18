@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,19 +14,17 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "route")
+@Document
 public class Route implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @DBRef
     @JoinColumn(name = "departure_airport_id", referencedColumnName = "id")
     private Airport departureAirport;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @DBRef
     @JoinColumn(name = "arrival_airport_id", referencedColumnName = "id")
     private Airport arrivalAirport;
 

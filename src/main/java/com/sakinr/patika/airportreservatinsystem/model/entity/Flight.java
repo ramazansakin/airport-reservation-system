@@ -3,6 +3,8 @@ package com.sakinr.patika.airportreservatinsystem.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,13 +14,11 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "flight")
+@Document
 public class Flight {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
 
     @NotNull(message = "code can not be null")
     private String code;
@@ -37,17 +37,17 @@ public class Flight {
     @Column(name = "estimated_arrival_date")
     private Date estimatedArrivalDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "flight", cascade = CascadeType.ALL)
+    @DBRef
     private List<Ticket> tickets;
 
     @NotNull(message = "route can not be null")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @DBRef
     @JoinColumn(name = "route_id", referencedColumnName = "id")
     private Route route;
 
 
     @NotNull(message = "airport can not be null")
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @DBRef
     @JoinColumn(name = "airport_company_id", referencedColumnName = "id")
     private AirportCompany airportCompany;
 
