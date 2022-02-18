@@ -8,7 +8,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class FlightController {
     }
 
     @GetMapping(value = "/{id}")
-    public Flight getFlight(@PathVariable @Min(1) Integer id) {
+    public Flight getFlight(@PathVariable String id) {
         return flightService.getFlight(id);
     }
 
@@ -47,7 +46,7 @@ public class FlightController {
     }
 
     @DeleteMapping(value = "/delete")
-    public boolean deleteFlight(@RequestParam @Min(1) Integer id) {
+    public boolean deleteFlight(@RequestParam String id) {
         return flightService.deleteFlight(id);
     }
 

@@ -1,18 +1,14 @@
 package com.sakinr.patika.airportreservatinsystem.controller;
 
 
-import com.sakinr.patika.airportreservatinsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservatinsystem.model.entity.Ticket;
 import com.sakinr.patika.airportreservatinsystem.service.FlightService;
 import com.sakinr.patika.airportreservatinsystem.service.TicketService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.List;
 
 
@@ -37,7 +33,7 @@ public class TicketController {
     }
 
     @GetMapping(value = "/{id}")
-    public Ticket getTicket(@PathVariable @Min(1) Integer id) {
+    public Ticket getTicket(@PathVariable String id) {
         return ticketService.getTicket(id);
     }
 
@@ -52,15 +48,15 @@ public class TicketController {
     }
 
     @DeleteMapping(value = "/delete")
-    public boolean deleteTicket(@RequestParam @Min(1) Integer id) {
+    public boolean deleteTicket(@RequestParam String id) {
         return ticketService.deleteTicket(id);
     }
 
-    @GetMapping(value = "/all/flight/{id}")
-    public List<Ticket> getFlightRelatedTickets(@PathVariable @Min(1) Integer id) {
-        Flight flight = flightService.getFlight(id);
-        Page<Ticket> relatedFlightTickets = ticketService.getRelatedFlightTickets(Pageable.unpaged(), flight);
-        return relatedFlightTickets.getContent();
-    }
+//    @GetMapping(value = "/all/flight/{id}")
+//    public List<Ticket> getFlightRelatedTickets(@PathVariable String id) {
+//        Flight flight = flightService.getFlight(id);
+//        Page<Ticket> relatedFlightTickets = ticketService.getRelatedFlightTickets(Pageable.unpaged(), flight);
+//        return relatedFlightTickets.getContent();
+//    }
 
 }

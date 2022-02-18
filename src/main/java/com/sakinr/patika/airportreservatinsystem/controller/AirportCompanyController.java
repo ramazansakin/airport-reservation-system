@@ -14,7 +14,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.List;
 
 @Slf4j
@@ -37,7 +36,7 @@ public class AirportCompanyController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> getAirportCompany(@PathVariable @Min(1) Integer id) {
+    public ResponseEntity<?> getAirportCompany(@PathVariable String id) {
         AirportCompany airportCompany = airportCompanyService.getAirportCompany(id);
         ResponseEntity<?> response = new ResponseEntity<>(airportCompany, HttpStatus.OK);
         log.info("Response : " + response);
@@ -55,18 +54,18 @@ public class AirportCompanyController {
     }
 
     @DeleteMapping(value = "/delete")
-    public boolean deleteAirportCompany(@RequestParam @Min(1) Integer id) {
+    public boolean deleteAirportCompany(@RequestParam String id) {
         return airportCompanyService.deleteAirportCompany(id);
     }
 
     @PostMapping(value = "/add-flight")
-    public boolean addNewFlight(@RequestParam @Min(1) Integer airportCompanyId,
-                                @RequestParam @Min(1) Integer flightId) {
+    public boolean addNewFlight(@RequestParam String airportCompanyId,
+                                @RequestParam String flightId) {
         return airportCompanyService.addNewFlight(airportCompanyId, flightId);
     }
 
     @PostMapping(value = "/buy-ticket")
-    public ResponseEntity<?> buyTicket(@RequestParam @Min(1) Integer flightId, @RequestParam @Min(1) Integer passengerId) {
+    public ResponseEntity<?> buyTicket(@RequestParam String flightId, @RequestParam String passengerId) {
         ResponseEntity<?> response;
         try {
             Ticket ticket = airportCompanyService.buyTicketForFlight(flightId, passengerId);
@@ -78,17 +77,17 @@ public class AirportCompanyController {
     }
 
     @PostMapping(value = "/cancel-ticket")
-    public boolean cancelTicket(@RequestParam @Min(1) Integer ticketId) {
+    public boolean cancelTicket(@RequestParam String ticketId) {
         return airportCompanyService.cancelTicket(ticketId);
     }
 
     @PostMapping(value = "/search-ticket")
-    public Ticket searchTicket(@RequestParam @Min(1) Integer ticketId) {
+    public Ticket searchTicket(@RequestParam String ticketId) {
         return airportCompanyService.searchTicket(ticketId);
     }
 
     @GetMapping("/by-airport-company/{airportCompanyId}")
-    public List<Flight> getAllFlightByAirportCompany(@PathVariable Integer airportCompanyId) {
+    public List<Flight> getAllFlightByAirportCompany(@PathVariable String airportCompanyId) {
         return airportCompanyService.getAllFlightByAirportCompany(airportCompanyId);
     }
 

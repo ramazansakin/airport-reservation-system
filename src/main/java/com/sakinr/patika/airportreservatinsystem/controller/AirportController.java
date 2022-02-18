@@ -12,7 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,7 +36,7 @@ public class AirportController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> getAirport(@PathVariable @Min(1) Integer id) {
+    public ResponseEntity<?> getAirport(@PathVariable String id) {
         ResponseEntity<?> response = null;
         Airport airport = airportService.getAirport(id);
         AirportDTO airportDTO = AirportMapper.toDto(airport);
@@ -51,12 +50,12 @@ public class AirportController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public AirportDTO updateAirport(@PathVariable @Min(1) Integer id, @Valid @RequestBody AirportDTO airport) {
+    public AirportDTO updateAirport(@PathVariable String id, @Valid @RequestBody AirportDTO airport) {
         return AirportMapper.toDto(airportService.updateAirport(id, AirportMapper.toEntity(airport)));
     }
 
     @DeleteMapping(value = "/delete")
-    public boolean deleteAirport(@RequestParam @Min(1) Integer id) {
+    public boolean deleteAirport(@RequestParam String id) {
         return airportService.deleteAirport(id);
     }
 

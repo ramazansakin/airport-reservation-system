@@ -2,8 +2,8 @@ package com.sakinr.patika.airportreservatinsystem.controller;
 
 
 import com.sakinr.patika.airportreservatinsystem.exception.InvalidRequestException;
-import com.sakinr.patika.airportreservatinsystem.model.entity.Passenger;
 import com.sakinr.patika.airportreservatinsystem.model.PassengerDto;
+import com.sakinr.patika.airportreservatinsystem.model.entity.Passenger;
 import com.sakinr.patika.airportreservatinsystem.model.mapper.PassengerMapper;
 import com.sakinr.patika.airportreservatinsystem.service.PassengerService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,7 +37,7 @@ public class PassengerController {
     }
 
     @GetMapping(value = "/{id}")
-    public PassengerDto getPassenger(@PathVariable @Min(1) Integer id) {
+    public PassengerDto getPassenger(@PathVariable String id) {
         return PASSENGER_MAPPER.toDto(passengerService.getPassenger(id));
     }
 
@@ -56,7 +55,7 @@ public class PassengerController {
     }
 
     @DeleteMapping(value = "/delete")
-    public boolean deletePassenger(@RequestParam @Min(1) Integer id) {
+    public boolean deletePassenger(@RequestParam String id) {
         return passengerService.deletePassenger(id);
     }
 

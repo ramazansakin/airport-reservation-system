@@ -10,7 +10,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.List;
 
 
@@ -28,7 +27,7 @@ public class RouteController {
     }
 
     @GetMapping(value = "/{id}")
-    public Route getRoute(@PathVariable @Min(1) Integer id) {
+    public Route getRoute(@PathVariable String id) {
         return routeService.getRoute(id);
     }
 
@@ -43,13 +42,13 @@ public class RouteController {
     }
 
     @DeleteMapping(value = "/delete")
-    public boolean deleteRoute(@RequestParam @Min(1) Integer id) {
+    public boolean deleteRoute(@RequestParam String id) {
         return routeService.deleteRoute(id);
     }
 
     @GetMapping(value = "/v2/departure-airport/{depId}")
     public ResponseEntity<Route> getOneByDepartureIdV2(
-            @PathVariable @Min(1) Integer depId
+            @PathVariable String depId
     ) {
         Route route = routeService.getFirstRouteByDepartureAirportByDefault(depId);
         return new ResponseEntity<>(route, HttpStatus.OK);
