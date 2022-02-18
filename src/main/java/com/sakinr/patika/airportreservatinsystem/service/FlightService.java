@@ -9,13 +9,13 @@ import java.util.List;
 public interface FlightService {
     List<Flight> getAllFlights();
 
-    Flight getFlight(Integer id);
+    Flight getFlight(String id);
 
     void addFlight(Flight flight);
 
     Flight updateFlight(Flight flight);
 
-    boolean deleteFlight(Integer id);
+    boolean deleteFlight(String id);
 
     List<Flight> getAllFlightsDepartureDateBetween(Date start, Date end);
 

@@ -9,14 +9,14 @@ public interface RouteService {
 
     List<Route> getAllRoutes();
 
-    Route getRoute(Integer id);
+    Route getRoute(String id);
 
     void addRoute(Route route);
 
     Route updateRoute(Route route);
 
-    boolean deleteRoute(Integer id);
+    boolean deleteRoute(String id);
 
-    Route getFirstRouteByDepartureAirportByDefault(Integer departureAirportId);
+    Route getFirstRouteByDepartureAirportByDefault(String departureAirportId);
 
 }

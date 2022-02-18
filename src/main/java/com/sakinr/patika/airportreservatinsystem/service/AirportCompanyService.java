@@ -10,21 +10,21 @@ import java.util.List;
 public interface AirportCompanyService {
     List<AirportCompany> getAllAirportCompanies();
 
-    AirportCompany getAirportCompany(Integer id);
+    AirportCompany getAirportCompany(String id);
 
     void addAirportCompany(AirportCompany airportCompany);
 
     AirportCompany updateAirportCompany(AirportCompany airportCompany);
 
-    boolean deleteAirportCompany(Integer id);
+    boolean deleteAirportCompany(String id);
 
-    boolean addNewFlight(Integer airportCompanyId, Integer flightId);
+    boolean addNewFlight(String airportCompanyId, String flightId);
 
-    Ticket buyTicketForFlight(Integer flightId, Integer passengerId);
+    Ticket buyTicketForFlight(String flightId, String passengerId);
 
-    boolean cancelTicket(Integer ticketId);
+    boolean cancelTicket(String ticketId);
 
-    Ticket searchTicket(Integer ticketId);
+    Ticket searchTicket(String ticketId);
 
-    List<Flight> getAllFlightByAirportCompany(Integer airportCompanyId);
+    List<Flight> getAllFlightByAirportCompany(String airportCompanyId);
 }

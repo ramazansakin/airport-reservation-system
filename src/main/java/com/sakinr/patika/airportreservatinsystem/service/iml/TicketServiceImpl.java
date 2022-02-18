@@ -25,7 +25,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Ticket getTicket(Integer id) {
+    public Ticket getTicket(String id) {
         Optional<Ticket> byId = ticketRepository.findById(id);
         return byId.orElseThrow(() -> new NotFoundException("Ticket"));
     }
@@ -41,15 +41,15 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public boolean deleteTicket(Integer id) {
+    public boolean deleteTicket(String id) {
         Ticket ticket = getTicket(id);
         ticketRepository.delete(ticket);
         return true;
     }
 
-    @Override
-    public Page<Ticket> getRelatedFlightTickets(Pageable pageable, Flight flight) {
-        return ticketRepository.getAllByFlightPagination(pageable, flight);
-    }
+//    @Override
+//    public Page<Ticket> getRelatedFlightTickets(Pageable pageable, Flight flight) {
+//        return ticketRepository.getAllByFlightPagination(pageable, flight);
+//    }
 
 }

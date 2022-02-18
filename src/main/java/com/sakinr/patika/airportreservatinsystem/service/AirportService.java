@@ -7,11 +7,11 @@ import java.util.List;
 public interface AirportService {
     List<Airport> getAllAirports();
 
-    Airport getAirport(Integer id);
+    Airport getAirport(String id);
 
     void addAirport(Airport airport);
 
-    Airport updateAirport(Integer id, Airport airport);
+    Airport updateAirport(String id, Airport airport);
 
-    boolean deleteAirport(Integer id);
+    boolean deleteAirport(String id);
 }

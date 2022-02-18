@@ -27,7 +27,7 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Route getRoute(Integer id) {
+    public Route getRoute(String id) {
         Optional<Route> byId = routeRepository.findById(id);
         return byId.orElseThrow(() -> new NotFoundException("Route"));
     }
@@ -43,13 +43,13 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public boolean deleteRoute(Integer id) {
+    public boolean deleteRoute(String id) {
         routeRepository.delete(getRoute(id));
         return true;
     }
 
     @Override
-    public Route getFirstRouteByDepartureAirportByDefault(Integer departureAirportId) {
+    public Route getFirstRouteByDepartureAirportByDefault(String departureAirportId) {
         Airport depAirport = airportService.getAirport(departureAirportId);
         Optional<Route> byDepartureAirport = Optional.ofNullable(routeRepository.findByDepartureAirport(depAirport));
         return byDepartureAirport.orElseThrow(() -> new NotFoundException("FirstRouteByDepartureAirport"));

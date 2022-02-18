@@ -28,7 +28,7 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public Airport getAirport(Integer id) {
+    public Airport getAirport(String id) {
         Optional<Airport> byId = airportRepository.findById(id);
         return byId.orElseThrow(() -> new NotFoundException("Airport"));
     }
@@ -39,14 +39,14 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public Airport updateAirport(Integer id, Airport airport) {
+    public Airport updateAirport(String id, Airport airport) {
         getAirport(id);
         airport.setId(id);
         return airportRepository.save(airport);
     }
 
     @Override
-    public boolean deleteAirport(Integer id) {
+    public boolean deleteAirport(String id) {
         airportRepository.delete(getAirport(id));
         return true;
     }
@@ -94,16 +94,6 @@ public class AirportServiceImpl implements AirportService {
         // Gets combined Address String
         return function.apply(airport1, airport2);
     }
-
-    private void consumeAirportAddresses(Integer airportId) {
-        Airport airport = airportRepository.getById(airportId);
-
-        // Defining a consumer for airport address list
-        Consumer<Airport> airportConsumer = air -> air.getAddresses().forEach(System.out::println);
-
-        airportConsumer.accept(airport);
-    }
-
 
 }
 

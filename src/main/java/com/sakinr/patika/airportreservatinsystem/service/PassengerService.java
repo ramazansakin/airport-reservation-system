@@ -8,13 +8,13 @@ import java.util.List;
 public interface PassengerService {
     List<Passenger> getAllPassengers();
 
-    Passenger getPassenger(Integer id);
+    Passenger getPassenger(String id);
 
     void addPassenger(@RequestBody Passenger passenger);
 
     Passenger updatePassenger(@RequestBody Passenger passenger);
 
-    boolean deletePassenger(Integer id);
+    boolean deletePassenger(String id);
 
     List<Passenger> getPassengersNameStartsWith(String prefix);
 

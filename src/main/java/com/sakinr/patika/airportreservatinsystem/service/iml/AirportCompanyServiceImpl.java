@@ -36,7 +36,7 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public AirportCompany getAirportCompany(Integer id) {
+    public AirportCompany getAirportCompany(String id) {
         Optional<AirportCompany> byId = airportCompanyRepository.findById(id);
         return byId.orElseThrow(() -> new NotFoundException("AirportCompany"));
     }
@@ -52,7 +52,7 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public boolean addNewFlight(Integer airportCompanyId, Integer flightId) {
+    public boolean addNewFlight(String airportCompanyId, String flightId) {
         AirportCompany airportCompany = getAirportCompany(airportCompanyId);
         Flight flight = flightService.getFlight(flightId);
         flight.setAirportCompany(airportCompany);
@@ -61,14 +61,14 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public boolean deleteAirportCompany(Integer id) {
+    public boolean deleteAirportCompany(String id) {
         AirportCompany airportCompany = getAirportCompany(id);
         airportCompanyRepository.delete(airportCompany);
         return true;
     }
 
     @Override
-    public boolean cancelTicket(Integer ticketId) {
+    public boolean cancelTicket(String ticketId) {
         Ticket ticket = ticketService.getTicket(ticketId);
         Flight flight = flightService.getFlight(ticket.getFlight().getId());
         Ticket ticket1 = flight.getTickets().stream()
@@ -81,12 +81,12 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public Ticket searchTicket(Integer ticketId) {
+    public Ticket searchTicket(String ticketId) {
         return ticketService.getTicket(ticketId);
     }
 
     @Override
-    public Ticket buyTicketForFlight(Integer flightId, Integer passengerId) {
+    public Ticket buyTicketForFlight(String flightId, String passengerId) {
         Passenger passenger = passengerService.getPassenger(passengerId);
         Flight flight = flightService.getFlight(flightId);
 
@@ -109,7 +109,7 @@ public class AirportCompanyServiceImpl implements AirportCompanyService {
     }
 
     @Override
-    public List<Flight> getAllFlightByAirportCompany(Integer airportCompanyId) {
+    public List<Flight> getAllFlightByAirportCompany(String airportCompanyId) {
         AirportCompany airportCompany = getAirportCompany(airportCompanyId);
         return airportCompany.getFlights();
     }

@@ -25,7 +25,7 @@ public class PassengerServiceImpl implements PassengerService {
     }
 
     @Override
-    public Passenger getPassenger(Integer id) {
+    public Passenger getPassenger(String id) {
         Optional<Passenger> byId = passengerRepository.findById(id);
         return byId.orElseThrow(() -> new NotFoundException("Passenger"));
     }
@@ -41,7 +41,7 @@ public class PassengerServiceImpl implements PassengerService {
     }
 
     @Override
-    public boolean deletePassenger(Integer id) {
+    public boolean deletePassenger(String id) {
         passengerRepository.delete(getPassenger(id));
         return true;
     }

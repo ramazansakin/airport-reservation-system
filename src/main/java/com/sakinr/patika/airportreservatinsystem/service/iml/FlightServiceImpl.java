@@ -24,7 +24,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Flight getFlight(Integer id) {
+    public Flight getFlight(String id) {
         Optional<Flight> byId = flightRepository.findById(id);
         return byId.orElseThrow(() -> new NotFoundException("Flight"));
     }
@@ -40,7 +40,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public boolean deleteFlight(Integer id) {
+    public boolean deleteFlight(String id) {
         flightRepository.delete(getFlight(id));
         return true;
     }
