@@ -20,7 +20,11 @@ public class WebSecurityConfigLocal extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Entry points
-        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
+        http
+                .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
+                .authorizeRequests().anyRequest().permitAll();
 
     }
 
