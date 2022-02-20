@@ -116,7 +116,8 @@ class AirportCompanyControllerTest {
     void saveAirportCompany() throws Exception {
         // init test values
         List<AirportCompany> expectedAirportCompanies = getTestAirportCompanies();
-        AirportCompany expectedAirportCompany = new AirportCompany(4, "Airport W", new ArrayList<>());
+        AirportCompany expectedAirportCompany = new AirportCompany();
+        expectedAirportCompany.setName("SampleAirportCompany");
         expectedAirportCompanies.add(expectedAirportCompany);
 
         // stub - given
