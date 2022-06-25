@@ -2,8 +2,8 @@ package com.sakinr.patika.airportreservationsystem.controller;
 
 
 import com.sakinr.patika.airportreservationsystem.exception.InvalidRequestException;
+import com.sakinr.patika.airportreservationsystem.model.dto.PassengerDTO;
 import com.sakinr.patika.airportreservationsystem.model.entity.Passenger;
-import com.sakinr.patika.airportreservationsystem.model.PassengerDto;
 import com.sakinr.patika.airportreservationsystem.model.mapper.PassengerMapper;
 import com.sakinr.patika.airportreservationsystem.service.PassengerService;
 import lombok.RequiredArgsConstructor;
@@ -32,23 +32,23 @@ public class PassengerController {
     }
 
     @GetMapping(value = "/all")
-    public List<PassengerDto> getAllPassengers() {
+    public List<PassengerDTO> getAllPassengers() {
         List<Passenger> allPassengers = passengerService.getAllPassengers();
         return allPassengers.stream().map(PASSENGER_MAPPER::toDto).collect(Collectors.toList());
     }
 
     @GetMapping(value = "/{id}")
-    public PassengerDto getPassenger(@PathVariable @Min(1) Integer id) {
+    public PassengerDTO getPassenger(@PathVariable @Min(1) Integer id) {
         return PASSENGER_MAPPER.toDto(passengerService.getPassenger(id));
     }
 
     @PostMapping(value = "/create")
-    public void savePassenger(@Valid @RequestBody PassengerDto passenger) {
+    public void savePassenger(@Valid @RequestBody PassengerDTO passenger) {
         passengerService.addPassenger(PASSENGER_MAPPER.toEntity(passenger));
     }
 
     @PutMapping(value = "/update")
-    public PassengerDto updatePassenger(@Valid @RequestBody Passenger passenger) {
+    public PassengerDTO updatePassenger(@Valid @RequestBody Passenger passenger) {
         if (passenger.getId() == null) {
             throw new InvalidRequestException("Passenger id can not be null for update!");
         }

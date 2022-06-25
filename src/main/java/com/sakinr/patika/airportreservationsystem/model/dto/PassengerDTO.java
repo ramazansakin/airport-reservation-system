@@ -1,9 +1,9 @@
-package com.sakinr.patika.airportreservationsystem.model;
+package com.sakinr.patika.airportreservationsystem.model.dto;
 
 import lombok.Data;
 
 @Data
-public class PassengerDto {
+public class PassengerDTO {
 
     private String firstname;
     private String lastname;

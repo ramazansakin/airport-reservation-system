@@ -1,5 +1,6 @@
-package com.sakinr.patika.airportreservationsystem.model;
+package com.sakinr.patika.airportreservationsystem.model.dto;
 
+import com.sakinr.patika.airportreservationsystem.model.Address;
 import lombok.Data;
 
 import javax.validation.Valid;

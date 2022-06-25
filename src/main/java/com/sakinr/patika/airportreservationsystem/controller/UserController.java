@@ -1,9 +1,9 @@
 package com.sakinr.patika.airportreservationsystem.controller;
 
 import com.sakinr.patika.airportreservationsystem.model.entity.User;
-import com.sakinr.patika.airportreservationsystem.model.UserDataDTO;
-import com.sakinr.patika.airportreservationsystem.model.UserLoginDTO;
-import com.sakinr.patika.airportreservationsystem.model.UserResponseDTO;
+import com.sakinr.patika.airportreservationsystem.model.dto.UserDataDTO;
+import com.sakinr.patika.airportreservationsystem.model.dto.UserLoginDTO;
+import com.sakinr.patika.airportreservationsystem.model.dto.UserResponseDTO;
 import com.sakinr.patika.airportreservationsystem.service.iml.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.sakinr.patika.airportreservationsystem.model;
+package com.sakinr.patika.airportreservationsystem.model.dto;
 
 import com.sakinr.patika.airportreservationsystem.model.entity.Role;
 import lombok.Data;
