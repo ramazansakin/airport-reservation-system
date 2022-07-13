@@ -7,13 +7,13 @@ services:
       - "8085:8085"
     restart: always
     depends_on:
-      - postges-db
+      - postgres-db
       - rabbitmq
     links:
-      - postges-db
+      - postgres-db
       - rabbitmq
 
-  postges-db:
+  postgres-db:
     image: postgres:14-alpine
     ports:
       - "5432:5432"
