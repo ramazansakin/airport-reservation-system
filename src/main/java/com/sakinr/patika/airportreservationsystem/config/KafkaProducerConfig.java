@@ -18,6 +18,7 @@ import java.util.Map;
 public class KafkaProducerConfig {
 
     public static final String PASSENGER_TOPIC = "student-topic";
+    public static final String TEST_TOPIC = "test-topic";
 
     @Value("${kafka.bootstrapAddress}")
     private String bootstrapAddress;
@@ -25,6 +26,11 @@ public class KafkaProducerConfig {
     @Bean
     public NewTopic passengerTopic() {
         return new NewTopic(PASSENGER_TOPIC, 1, (short) 1);
+    }
+
+    @Bean
+    public NewTopic testTopic() {
+        return new NewTopic(TEST_TOPIC, 1, (short) 1);
     }
 
     @Bean
