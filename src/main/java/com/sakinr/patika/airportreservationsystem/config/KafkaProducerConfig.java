@@ -17,7 +17,7 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
-    private static final String PASSENGER_TOPIC = "student-topic";
+    public static final String PASSENGER_TOPIC = "student-topic";
 
     @Value("${kafka.bootstrapAddress}")
     private String bootstrapAddress;
