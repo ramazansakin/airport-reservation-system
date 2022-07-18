@@ -18,7 +18,7 @@ public class PassengerProducer {
     private final KafkaTemplate<String, Object> passengerKafkaTemplate;
     private static final Queue<Passenger> passengerAnalyzerProducerQueue = new LinkedList<>();
 
-    private static final long PASSENGER_PRODUCING_TIME_SCHEDULE_MILLIS = 60 * 1000; // 1 min
+    private static final long PASSENGER_PRODUCING_TIME_SCHEDULE_MILLIS = 30 * 1000; // 30 secs
 
     public PassengerProducer(@Qualifier("kafkaPassengerTemplate") KafkaTemplate<String, Object> customKafkaTemplate) {
         this.passengerKafkaTemplate = customKafkaTemplate;
