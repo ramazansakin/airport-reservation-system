@@ -2,6 +2,7 @@ package com.sakinr.patika.airportreservationsystem.producer;
 
 import com.sakinr.patika.airportreservationsystem.config.KafkaProducerConfig;
 import com.sakinr.patika.airportreservationsystem.model.entity.Passenger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@Slf4j
 @Component
 public class PassengerProducer {
 
@@ -31,6 +33,7 @@ public class PassengerProducer {
         // check is there any new stored passenger on db
         while (!passengerAnalyzerProducerQueue.isEmpty()) {
             Passenger currentPassenger = passengerAnalyzerProducerQueue.remove();
+            log.info("Passenger sent to Kafka : {}", currentPassenger);
             passengerKafkaTemplate.send(KafkaProducerConfig.PASSENGER_TOPIC, currentPassenger);
         }
 
