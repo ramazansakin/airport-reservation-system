@@ -16,10 +16,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@Profile("docker")
+@Profile({"docker","local"})
 public class KafkaProducerConfig {
 
-    public static final String PASSENGER_TOPIC = "student-topic";
+    public static final String PASSENGER_TOPIC = "passenger-topic";
     public static final String TEST_TOPIC = "test-topic";
 
     @Value("${kafka.bootstrapAddress}")
