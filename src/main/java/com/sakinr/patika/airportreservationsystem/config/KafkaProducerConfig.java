@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
@@ -16,11 +17,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@Profile({"docker","local"})
+@EnableKafka
+@Profile({"docker", "local"})
 public class KafkaProducerConfig {
 
-    public static final String PASSENGER_TOPIC = "passenger-topic";
-    public static final String TEST_TOPIC = "test-topic";
+    public static final String PASSENGER_TOPIC = "passengert";
+    public static final String TEST_TOPIC = "testt";
 
     @Value("${kafka.bootstrapAddress}")
     private String bootstrapAddress;
@@ -62,6 +64,8 @@ public class KafkaProducerConfig {
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        // NOTE : If you have a problem on conversion, you can define TYPE_MAPPINGS like below!
+        configProps.put(JsonSerializer.TYPE_MAPPINGS, "passengert:com.sakinr.patika.airportreservationsystem.model.dto.PassengerDTO");
 
         return new DefaultKafkaProducerFactory<>(configProps);
     }
