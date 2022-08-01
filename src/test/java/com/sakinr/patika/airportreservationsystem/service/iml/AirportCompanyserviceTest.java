@@ -101,7 +101,7 @@ public class AirportCompanyserviceTest {
         Flight updatedTestFlight = testFlight;
 
 
-        // when
+        // when - stubbing
         Mockito.when(ticketService.getTicket(any())).thenReturn(ticket1);
         Mockito.when(flightService.getFlight(any())).thenReturn(testFlight);
         Mockito.when(flightService.updateFlight(any())).thenReturn(updatedTestFlight);

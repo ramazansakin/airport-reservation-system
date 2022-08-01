@@ -8,6 +8,7 @@ import com.sakinr.patika.airportreservationsystem.model.entity.AirportCompany;
 import com.sakinr.patika.airportreservationsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservationsystem.service.iml.AirportCompanyServiceImpl;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -109,7 +110,7 @@ class AirportCompanyControllerTest {
         // then
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         AirportCompany actualAirportCompany = new ObjectMapper().readValue(response.getContentAsString(), AirportCompany.class);
-        Assert.assertEquals(expectedAirportCompanies.get(0), actualAirportCompany);
+        Assert.assertEquals(expectedAirportCompanies.get(0).getName(), actualAirportCompany.getName());
     }
 
     @Test
