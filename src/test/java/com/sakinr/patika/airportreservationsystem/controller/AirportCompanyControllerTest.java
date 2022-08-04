@@ -121,7 +121,9 @@ class AirportCompanyControllerTest {
         // init test values
         List<AirportCompany> expectedAirportCompanies = getTestAirportCompanies();
         AirportCompany expectedAirportCompany = new AirportCompany();
-        String reqName = "                    asd             ";
+        String reqName = "                    " +
+                "asd     " +
+                "        ";
         expectedAirportCompany.setName(reqName.trim());
         expectedAirportCompanies.add(expectedAirportCompany);
 
@@ -130,7 +132,6 @@ class AirportCompanyControllerTest {
         String expectedAirportJsonStr = ow.writeValueAsString(expectedAirportCompany);
         Mockito.doNothing().when(airportCompanyService).addAirportCompany(expectedAirportCompany);
 
-        // TODO :: check
         MockHttpServletResponse response = mvc.perform(post("/api/airport-company/create")
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
