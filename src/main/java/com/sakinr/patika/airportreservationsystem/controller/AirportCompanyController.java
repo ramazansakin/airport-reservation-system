@@ -45,6 +45,7 @@ public class AirportCompanyController {
         return response;
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/create")
     public void saveAirportCompany(@Valid @RequestBody AirportCompany airportCompany) {
         airportCompanyService.addAirportCompany(airportCompany);
