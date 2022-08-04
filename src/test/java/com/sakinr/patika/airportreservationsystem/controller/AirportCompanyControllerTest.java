@@ -31,7 +31,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @ExtendWith(MockitoExtension.class)
@@ -78,7 +82,7 @@ class AirportCompanyControllerTest {
         List<AirportCompany> expectedAirportCompanies = getTestAirportCompanies();
 
         // stub - when
-        Mockito.when(airportCompanyService.getAllAirportCompanies()).thenReturn(expectedAirportCompanies);
+        when(airportCompanyService.getAllAirportCompanies()).thenReturn(expectedAirportCompanies);
 
         MockHttpServletResponse response = mvc.perform(get("/api/airport-company/all")
                         .accept(MediaType.APPLICATION_JSON))
@@ -99,7 +103,7 @@ class AirportCompanyControllerTest {
         List<AirportCompany> expectedAirportCompanies = getTestAirportCompanies();
 
         // stub - given
-        Mockito.when(airportCompanyService.getAirportCompany(1)).thenReturn(expectedAirportCompanies.get(0));
+        when(airportCompanyService.getAirportCompany(1)).thenReturn(expectedAirportCompanies.get(0));
 
         MockHttpServletResponse response = mvc.perform(get("/api/airport-company/1")
                         .accept(MediaType.APPLICATION_JSON))
@@ -109,7 +113,7 @@ class AirportCompanyControllerTest {
         // then
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         AirportCompany actualAirportCompany = new ObjectMapper().readValue(response.getContentAsString(), AirportCompany.class);
-        Assert.assertEquals(expectedAirportCompanies.get(0), actualAirportCompany);
+        Assert.assertEquals(expectedAirportCompanies.get(0).getName(), actualAirportCompany.getName());
     }
 
     @Test
@@ -117,7 +121,10 @@ class AirportCompanyControllerTest {
         // init test values
         List<AirportCompany> expectedAirportCompanies = getTestAirportCompanies();
         AirportCompany expectedAirportCompany = new AirportCompany();
-        expectedAirportCompany.setName("SampleAirportCompany");
+        String reqName = "                    " +
+                "asd     " +
+                "        ";
+        expectedAirportCompany.setName(reqName.trim());
         expectedAirportCompanies.add(expectedAirportCompany);
 
         // stub - given
@@ -133,14 +140,40 @@ class AirportCompanyControllerTest {
                 .andReturn().getResponse();
 
         // then
-        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.CREATED.value());
         Mockito.verify(airportCompanyService, Mockito.times(1)).addAirportCompany(any());
+    }
+
+    @Test
+    void testUpdate() throws Exception {
+        // init test values
+        AirportCompany requestAirportC = getTestAirportCompanies().get(0);
+        AirportCompany updated = new AirportCompany(requestAirportC.getId(), "New Name", null);
+
+        // stub - given
+        when(airportCompanyService.updateAirportCompany(requestAirportC)).thenReturn(updated);
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String expectedAirportJsonStr = ow.writeValueAsString(requestAirportC);
+
+        // test
+        MockHttpServletResponse response = mvc.perform(put("/api/airport-company/update")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(expectedAirportJsonStr))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn().getResponse();
+
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+        AirportCompany actualAirportCompany = new ObjectMapper().readValue(response.getContentAsString(), AirportCompany.class);
+        Assert.assertEquals(updated.getId(), actualAirportCompany.getId());
+        Assert.assertEquals(updated.getName(), actualAirportCompany.getName());
+
     }
 
     @Test
     public void deleteAirportCompany() throws Exception {
         // stub - given
-        Mockito.when(airportCompanyService.deleteAirportCompany(any())).thenReturn(true);
+        when(airportCompanyService.deleteAirportCompany(any())).thenReturn(true);
 
         MockHttpServletResponse response = mvc.perform(delete("/api/airport-company/delete?id=5")
                         .accept(MediaType.APPLICATION_JSON)

@@ -9,6 +9,7 @@ import com.sakinr.patika.airportreservationsystem.service.AirportCompanyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +45,7 @@ public class AirportCompanyController {
         return response;
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/create")
     public void saveAirportCompany(@Valid @RequestBody AirportCompany airportCompany) {
         airportCompanyService.addAirportCompany(airportCompany);

@@ -2,9 +2,11 @@ package com.sakinr.patika.airportreservationsystem.service.iml;
 
 import com.sakinr.patika.airportreservationsystem.exception.NotFoundException;
 import com.sakinr.patika.airportreservationsystem.model.entity.Passenger;
+import com.sakinr.patika.airportreservationsystem.producer.PassengerProducer;
 import com.sakinr.patika.airportreservationsystem.repository.PassengerRepository;
 import com.sakinr.patika.airportreservationsystem.service.PassengerService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class PassengerServiceImpl implements PassengerService {
@@ -33,6 +36,8 @@ public class PassengerServiceImpl implements PassengerService {
     @Override
     public void addPassenger(Passenger passenger) {
         passengerRepository.save(passenger);
+        log.info("Passenger sent to Producer Queue : {}", passenger);
+        PassengerProducer.addToQueue(passenger);
     }
 
     @Override
