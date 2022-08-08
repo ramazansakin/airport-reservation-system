@@ -1,7 +1,6 @@
 package com.sakinr.patika.airportreservationsystem.controller;
 
 
-import com.sakinr.patika.airportreservationsystem.exception.InvalidRequestException;
 import com.sakinr.patika.airportreservationsystem.model.dto.PassengerDTO;
 import com.sakinr.patika.airportreservationsystem.model.entity.Passenger;
 import com.sakinr.patika.airportreservationsystem.model.mapper.PassengerMapper;
@@ -9,7 +8,15 @@ import com.sakinr.patika.airportreservationsystem.service.PassengerService;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -48,11 +55,8 @@ public class PassengerController {
     }
 
     @PutMapping(value = "/update")
-    public PassengerDTO updatePassenger(@Valid @RequestBody Passenger passenger) {
-        if (passenger.getId() == null) {
-            throw new InvalidRequestException("Passenger id can not be null for update!");
-        }
-        return PASSENGER_MAPPER.toDto(passengerService.updatePassenger(passenger));
+    public PassengerDTO updatePassenger(@Valid @RequestBody PassengerDTO passengerDTO) {
+        return PASSENGER_MAPPER.toDto(passengerService.updatePassenger(PASSENGER_MAPPER.toEntity(passengerDTO)));
     }
 
     @DeleteMapping(value = "/delete")

@@ -1,5 +1,6 @@
 package com.sakinr.patika.airportreservationsystem.service.iml;
 
+import com.sakinr.patika.airportreservationsystem.exception.InvalidRequestException;
 import com.sakinr.patika.airportreservationsystem.exception.NotFoundException;
 import com.sakinr.patika.airportreservationsystem.model.entity.Passenger;
 import com.sakinr.patika.airportreservationsystem.producer.PassengerProducer;
@@ -42,6 +43,9 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     public Passenger updatePassenger(Passenger passenger) {
+        if (passenger.getId() == null) {
+            throw new InvalidRequestException("Passenger id can not be null for update!");
+        }
         return passengerRepository.save(passenger);
     }
 
