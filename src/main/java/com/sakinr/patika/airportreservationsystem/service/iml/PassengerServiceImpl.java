@@ -45,10 +45,9 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     public Passenger updatePassenger(final Integer id, final Passenger passenger) {
-//        getPassenger(id);
-//        passenger.setId(id);
-        // PASSENGER_MAPPER.fill(passenger, currPassenger);
-        return passengerRepository.save(passenger);
+        Passenger currPassenger = getPassenger(id);
+        PASSENGER_MAPPER.fill(passenger, currPassenger);
+        return passengerRepository.save(currPassenger);
     }
 
     @Override
