@@ -1,7 +1,6 @@
 package com.sakinr.patika.airportreservationsystem.service;
 
 import com.sakinr.patika.airportreservationsystem.model.entity.Passenger;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -10,9 +9,9 @@ public interface PassengerService {
 
     Passenger getPassenger(Integer id);
 
-    void addPassenger(@RequestBody Passenger passenger);
+    void addPassenger(Passenger passenger);
 
-    Passenger updatePassenger(@RequestBody Passenger passenger);
+    Passenger updatePassenger(final Integer id, final Passenger passenger);
 
     boolean deletePassenger(Integer id);
 

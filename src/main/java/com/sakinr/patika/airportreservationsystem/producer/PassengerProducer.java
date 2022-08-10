@@ -17,7 +17,7 @@ import java.util.Queue;
 
 @Slf4j
 @Component
-@Profile({"docker", "local"})
+@Profile({"docker"})
 public class PassengerProducer {
 
     private final KafkaTemplate<String, Object> passengerKafkaTemplate;

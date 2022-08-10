@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Configuration
 @EnableKafka
-@Profile({"docker", "local"})
+@Profile({"docker"})
 public class KafkaProducerConfig {
 
     public static final String PASSENGER_TOPIC = "passengert";

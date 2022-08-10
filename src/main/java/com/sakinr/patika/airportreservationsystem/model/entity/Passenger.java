@@ -28,13 +28,13 @@ public class Passenger implements Serializable {
     @NotNull(message = "lastname can not be null")
     private String lastname;
 
-    @NotNull(message = "gender can not be null")
+//    @NotNull(message = "gender can not be null")
     private String gender;
 
-    @NotNull(message = "age can not be null")
+//    @NotNull(message = "age can not be null")
     private Integer age;
 
-    @NotNull(message = "phone can not be null")
+//    @NotNull(message = "phone can not be null")
     private String phone;
 
     @Email
