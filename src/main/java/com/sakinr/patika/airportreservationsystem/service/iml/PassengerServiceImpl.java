@@ -1,13 +1,14 @@
 package com.sakinr.patika.airportreservationsystem.service.iml;
 
-import com.sakinr.patika.airportreservationsystem.exception.InvalidRequestException;
 import com.sakinr.patika.airportreservationsystem.exception.NotFoundException;
 import com.sakinr.patika.airportreservationsystem.model.entity.Passenger;
+import com.sakinr.patika.airportreservationsystem.model.mapper.PassengerMapper;
 import com.sakinr.patika.airportreservationsystem.producer.PassengerProducer;
 import com.sakinr.patika.airportreservationsystem.repository.PassengerRepository;
 import com.sakinr.patika.airportreservationsystem.service.PassengerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 public class PassengerServiceImpl implements PassengerService {
 
     private final PassengerRepository passengerRepository;
+    private static final PassengerMapper PASSENGER_MAPPER = Mappers.getMapper(PassengerMapper.class);
 
     @Override
     public List<Passenger> getAllPassengers() {
@@ -42,10 +44,10 @@ public class PassengerServiceImpl implements PassengerService {
     }
 
     @Override
-    public Passenger updatePassenger(Passenger passenger) {
-        if (passenger.getId() == null) {
-            throw new InvalidRequestException("Passenger id can not be null for update!");
-        }
+    public Passenger updatePassenger(final Integer id, final Passenger passenger) {
+//        getPassenger(id);
+//        passenger.setId(id);
+        // PASSENGER_MAPPER.fill(passenger, currPassenger);
         return passengerRepository.save(passenger);
     }
 
