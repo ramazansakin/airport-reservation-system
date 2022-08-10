@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -22,10 +23,10 @@ public class Passenger implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull(message = "firstname can not be null")
+    @NotBlank(message = "firstname can not be null")
     private String firstname;
 
-    @NotNull(message = "lastname can not be null")
+    @NotBlank(message = "lastname can not be null")
     private String lastname;
 
 //    @NotNull(message = "gender can not be null")
@@ -38,6 +39,7 @@ public class Passenger implements Serializable {
     private String phone;
 
     @Email
+    @NotBlank
     private String email;
 
 }

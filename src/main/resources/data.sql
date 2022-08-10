@@ -54,7 +54,7 @@ CREATE TABLE passenger
     gender    VARCHAR(10),
     age       INT DEFAULT 0,
     phone     VARCHAR(15),
-    email     VARCHAR(25) UNIQUE
+    email     VARCHAR(25) UNIQUE NOT NULL
 );
 
 CREATE TABLE airport_company

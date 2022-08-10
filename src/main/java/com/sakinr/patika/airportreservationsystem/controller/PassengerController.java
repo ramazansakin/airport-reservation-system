@@ -10,7 +10,6 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -58,15 +57,15 @@ public class PassengerController {
     // PUT vs PATCH
     @PutMapping(value = "/update/{id}")
     public PassengerDTO updatePassenger(@PathVariable @Min(1) final Integer id,
-                                        @Valid @RequestBody Passenger passenger) {
-        return PASSENGER_MAPPER.toDto(passengerService.updatePassenger(id, passenger));
+                                        @Valid @RequestBody PassengerDTO passengerDTO) {
+        return PASSENGER_MAPPER.toDto(passengerService.updatePassenger(id, PASSENGER_MAPPER.toEntity(passengerDTO)));
     }
 
-    @PatchMapping(value = "/update/{id}")
-    public PassengerDTO patchPassenger(@PathVariable @Min(1) final Integer id,
-                                       @Valid @RequestBody Passenger passenger) {
-        return PASSENGER_MAPPER.toDto(passengerService.updatePassenger(id, passenger));
-    }
+//    @PatchMapping(value = "/update/{id}")
+//    public PassengerDTO patchPassenger(@PathVariable @Min(1) final Integer id,
+//                                       @Valid @RequestBody Passenger passenger) {
+//        return PASSENGER_MAPPER.toDto(passengerService.updatePassenger(id, passenger));
+//    }
 
     @DeleteMapping(value = "/delete")
     public boolean deletePassenger(@RequestParam @Min(1) Integer id) {
