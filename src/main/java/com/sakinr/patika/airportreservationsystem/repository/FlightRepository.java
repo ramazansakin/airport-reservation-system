@@ -14,4 +14,6 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
     List<Flight> getAllByDepartureDateBetween(Date startDate, Date endDate);
 
+    List<Flight> getAllByAirportCompany_Name(String airportCompanyName);
+
 }

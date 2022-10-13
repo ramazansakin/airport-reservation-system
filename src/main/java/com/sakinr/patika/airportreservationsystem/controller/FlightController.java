@@ -5,7 +5,15 @@ import com.sakinr.patika.airportreservationsystem.service.FlightService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -63,6 +71,12 @@ public class FlightController {
     @GetMapping("/by-code/{code}")
     public Flight getFlightByCode(@PathVariable String code) {
         return flightService.getFlightByCode(code);
+    }
+
+    // Get flights by airport
+    @GetMapping("/all/{airportName}")
+    public List<Flight> getFlightsByAirportCompany(@PathVariable String airportName) {
+        return flightService.getFlightsByAirportCompany(airportName);
     }
 
 }

@@ -55,5 +55,9 @@ public class FlightServiceImpl implements FlightService {
         return flightRepository.getByCode(code);
     }
 
+    @Override
+    public List<Flight> getFlightsByAirportCompany(String airportCompanyName) {
+        return flightRepository.getAllByAirportCompany_Name(airportCompanyName);
+    }
 
 }
