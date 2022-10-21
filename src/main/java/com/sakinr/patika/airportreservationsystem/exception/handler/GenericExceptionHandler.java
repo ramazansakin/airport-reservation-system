@@ -1,6 +1,7 @@
 package com.sakinr.patika.airportreservationsystem.exception.handler;
 
 import com.sakinr.patika.airportreservationsystem.exception.NotFoundException;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
+@Order( value = 2 )
 @ControllerAdvice
 public class GenericExceptionHandler {
 
