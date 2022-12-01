@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.List;
+import java.util.function.Predicate;
+
+import static java.util.Comparator.comparing;
 
 @Slf4j
 @Validated
@@ -41,7 +44,9 @@ public class AirportCompanyController {
 
     @GetMapping(value = "/all")
     public List<AirportCompany> getAllAirportCompanies() {
-        return airportCompanyService.getAllAirportCompanies();
+        List<AirportCompany> list = airportCompanyService.getAllAirportCompanies();
+        list.sort(comparing(airportCompany -> airportCompany.getName()));
+        return list;
     }
 
     @GetMapping(value = "/{id}")
@@ -93,7 +98,10 @@ public class AirportCompanyController {
 
     @GetMapping("/by-airport-company/{airportCompanyId}")
     public List<Flight> getAllFlightByAirportCompany(@PathVariable Integer airportCompanyId) {
+        Predicate<String> i = str -> str.length() > 5;
+
         return airportCompanyService.getAllFlightByAirportCompany(airportCompanyId);
     }
+
 
 }
