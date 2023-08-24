@@ -5,6 +5,8 @@ import com.sakinr.patika.airportreservationsystem.model.entity.AirportCompany;
 import com.sakinr.patika.airportreservationsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservationsystem.model.entity.Ticket;
 import com.sakinr.patika.airportreservationsystem.service.AirportCompanyService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.function.Predicate;
 

@@ -26,8 +26,7 @@ public class TestController {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity exchange = restTemplate.exchange("http://localhost:8080/test/" + test, HttpMethod.GET, entity, String.class);
-        return exchange;
+        return restTemplate.exchange("http://localhost:8080/test/" + test, HttpMethod.GET, entity, String.class);
     }
 
 }

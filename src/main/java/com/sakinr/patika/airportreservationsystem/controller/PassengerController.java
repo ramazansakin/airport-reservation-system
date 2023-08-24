@@ -7,6 +7,8 @@ import com.sakinr.patika.airportreservationsystem.model.dto.TestBody;
 import com.sakinr.patika.airportreservationsystem.model.entity.Passenger;
 import com.sakinr.patika.airportreservationsystem.model.mapper.PassengerMapper;
 import com.sakinr.patika.airportreservationsystem.service.PassengerService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.validation.annotation.Validated;
@@ -20,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.stream.Collectors;
 

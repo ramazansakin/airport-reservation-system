@@ -1,13 +1,13 @@
 package com.sakinr.patika.airportreservationsystem.model.entity;
 
 import com.sakinr.patika.airportreservationsystem.model.Address;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;

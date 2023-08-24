@@ -2,6 +2,8 @@ package com.sakinr.patika.airportreservationsystem.controller;
 
 import com.sakinr.patika.airportreservationsystem.model.entity.Flight;
 import com.sakinr.patika.airportreservationsystem.service.FlightService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
@@ -15,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import java.util.Date;
 import java.util.List;
 

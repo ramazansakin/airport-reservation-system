@@ -1,11 +1,11 @@
 package com.sakinr.patika.airportreservationsystem.model.dto;
 
 import com.sakinr.patika.airportreservationsystem.model.Address;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.StringJoiner;
 
