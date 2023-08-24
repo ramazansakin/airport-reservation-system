@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
-@Order( value = 2 )
+@Order(value = 2)
 @ControllerAdvice
 public class GenericExceptionHandler {
 
